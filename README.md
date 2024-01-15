@@ -39,19 +39,20 @@ This is the admission-controller deployment that sets this during the creation o
 
 
 
-Kyverno COMMANDS
-Verify creation:
-> kubectl get clusterpolicies.kyverno.io -A
-Verify the kyverno events
-> kubectl describe clusterpolicies.kyverno.io require-labels
+Kyverno COMMANDS  
+Verify creation:  
+> kubectl get clusterpolicies.kyverno.io -A  
+Verify the kyverno events  
+> kubectl describe clusterpolicies.kyverno.io require-labels  
 
-kyverno-deny-pods-cluster-wide-with-label-kubernetes-io-deny.yaml
-apiVersion: kyverno.io/v1
-kind: ClusterPolicy
-metadata:
-  name: require-labels
-  annotations:
-    policies.kyverno.io/title: Require Labels
+```yaml
+kyverno-deny-pods-cluster-wide-with-label-kubernetes-io-deny.yaml  
+apiVersion: kyverno.io/v1  
+kind: ClusterPolicy  
+metadata:  
+  name: require-labels  
+  annotations:  
+    policies.kyverno.io/title: Require Labels  
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/minversion: 1.6.0
     policies.kyverno.io/severity: medium
@@ -77,12 +78,12 @@ spec:
         metadata:
           labels:
             app.kubernetes.io/name: "?*"
+```
 
 
+pod-deny-label.yaml  
 
-pod-deny-label.yaml
-
-apiVersion: v1
+apiVersion: v1  
 kind: Pod
 metadata:
   name: test-pod
