@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v2alpha1
+kind: PolicyException
+metadata:
+  name: nginx-ns-exception
+  namespace: nginx-ns
+spec:
+  exceptions:
+  - policyName: require-labels
+    ruleNames:
+    - check-for-labels
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        namespaces:
+        - nginx-ns
+        names:
+        - test-deny-*

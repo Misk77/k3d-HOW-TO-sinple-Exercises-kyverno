@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kyverno
+  annotations:
+    openshift.io/node-selector: ""
+  labels:
+    misk.se/team: team-misk
