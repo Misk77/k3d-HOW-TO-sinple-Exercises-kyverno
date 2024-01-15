@@ -80,6 +80,7 @@ spec:
             app.kubernetes.io/name: "?*"
 ```
 
+```yaml
 
 pod-deny-label.yaml  
 
@@ -94,8 +95,10 @@ spec:
   - name: nginx
     image: nginx:latest
 
+```
 
 
+```yaml
 
 kyverno-PolicyException-NS.yaml
 apiVersion: kyverno.io/v2alpha1
@@ -120,6 +123,7 @@ spec:
 
 
 
+```
 
 
 
