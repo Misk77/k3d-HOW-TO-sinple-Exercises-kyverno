@@ -1,39 +1,40 @@
-KYVERNO - Very simple policies and exception 
+KYVERNO - Very simple policies and exception   
 
-kyverno-cli
-> kyverno version
-Version: 1.11.2
-Time: ---
-Git commit ID: ---
-
-
-POD WITH CERTAIN LABELS REQUIRE:
-ClusterPolicy
-label = deny
-
-apply pod - it should be created
-Delete newly created pod
-apply policy: Require-Labels
-Verify the policy is created
-Describe the policy
-apply pod - should not be able to be created
-Fix the pod with the error message by kyverno
-What is the difference for Audit Vs EnForce
-and how can you verify that Audit is working and read the output
-
-POD within excluded namespace is not affected by above cluster policy:
-this pod yaml definition is now denied across the whole cluster within all namespaces
-Create namespace policy for allow this pod to be created within a specific namespace
-Understand the WARN
-Modify the  pod yaml file so it is affected by the exception newly created and try to create the pod now
-remove the namespace values and try to create it
+kyverno-cli  
+> kyverno version  
+Version: 1.11.2  
+Time: ---  
+Git commit ID: ---  
 
 
-NOTE:
-Don't forget to check that the kyverno has enablePolicyException enabled
-https://www.youtube.com/watch?v=Evx1frnQMhw&t=595s
-This is the admission-controller deployment that sets this during the creation of the container spec
-> kubectl get deploy -n kyverno kyverno-admission-controller -o yaml | grep "Exception"
+POD WITH CERTAIN LABELS REQUIRE:  
+ClusterPolicy  
+label = deny  
+
+apply pod - it should be created  
+Delete newly created pod  
+apply policy: Require-Labels  
+Verify the policy is created  
+Describe the policy  
+apply pod - should not be able to be created  
+Fix the pod with the error message by kyverno  
+What is the difference for Audit Vs EnForce 
+and how can you verify that Audit is working and read the output  
+
+POD within excluded namespace is not affected by above cluster policy:  
+this pod yaml definition is now denied across the whole cluster within all namespaces  
+Create namespace policy for allow this pod to be created within a specific namespace 
+
+Understand the WARN  
+Modify the  pod yaml file so it is affected by the exception newly created and try to create the pod now  
+remove the namespace values and try to create it  
+
+
+NOTE:  
+Don't forget to check that the kyverno has enablePolicyException enabled  
+https://www.youtube.com/watch?v=Evx1frnQMhw&t=595s  
+This is the admission-controller deployment that sets this during the creation of the container spec 
+> kubectl get deploy -n kyverno kyverno-admission-controller -o yaml | grep "Exception" . 
 
 
 
